@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.flywaydb.flyway' version '8.5.12'
+	id 'java'
+}
+
+group = 'com.gmail.leonidov.lex'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.data:spring-data-jpa:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
+	implementation 'org.postgresql:postgresql:42.3.4'
+	implementation 'org.projectlombok:lombok:1.18.24'
+	implementation 'net.sf.opencsv:opencsv:2.3'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:junit-jupiter:1.17.2'
+	testImplementation 'org.testcontainers:postgresql:1.17.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
